@@ -9,7 +9,11 @@
         <center>
             <h1>OPÇÕES DO SISTEMA</h1>
             <h:form>
-                <h:commandLink value="CLIENTE" action="clientePrincipal" />
+                <h:panelGrid columns="1">
+                    <h:commandButton value="CLIENTE" action="clientePrincipal" />
+                    <h:commandButton value="TEMAS" action="temasPrincipal" />
+                    <h:commandButton value="PEDIDOS" action="pedidos" />
+                </h:panelGrid>
             </h:form>
         </center>
     </h:body>
