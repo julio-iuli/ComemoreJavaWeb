@@ -49,6 +49,19 @@ public class CategoriaDao {
        }
    }
    
+   public void alterarCategoria(Categoria c) {
+       Session sessao = HibernateUtil.getSessionFactory().openSession();
+       Transaction trans = sessao.beginTransaction();
+       try {
+           sessao.update(c);
+           trans.commit();
+       } catch (Exception err) {
+           err.getMessage(); 
+       } finally {
+           sessao.close();
+       }
+   }
+   
    public List pegarListaCategoria() {
        Session sessao = HibernateUtil.getSessionFactory().openSession();
        Transaction trans = sessao.beginTransaction();

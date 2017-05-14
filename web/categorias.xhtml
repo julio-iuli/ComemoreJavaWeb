@@ -26,7 +26,7 @@
                             AÇÕES
                         </f:facet>
                         <h:commandLink value="REMOVER" action="#{categoriaBean.apagarCategoria(data)}" />
-                        | <h:commandLink value="ALTERAR" />
+                        | <h:commandLink value="ALTERAR" action="#{categoriaBean.carregarCategoria(data)}" />
                     </h:column>
                 </h:dataTable>
             </h:form>

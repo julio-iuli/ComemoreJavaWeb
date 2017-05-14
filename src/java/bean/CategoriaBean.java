@@ -46,7 +46,16 @@ public class CategoriaBean implements Serializable {
         return "categorias";
     }
     
-   
+    public String carregarCategoria(Categoria c) {
+        this.categoria = c;
+        return "alterarCategoria";
+    }
+    
+    public String alterarCategoria() {
+        categoriaDao.alterarCategoria(categoria);
+        categoria = new Categoria();
+        return "categorias";
+    }
         
     public List<Categoria> pegarListaCategorias() {
         categorias = categoriaDao.pegarListaCategoria();
