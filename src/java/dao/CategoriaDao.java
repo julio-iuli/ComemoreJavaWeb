@@ -19,11 +19,13 @@ import util.HibernateUtil;
 
 public class CategoriaDao {
 
-   private Session sessao = HibernateUtil.getSessionFactory().openSession();
-   Transaction trans = sessao.beginTransaction();
+   //private Session sessao = HibernateUtil.getSessionFactory().openSession();
+   //Transaction trans = sessao.beginTransaction();
    List<Categoria> listaCategoria;
    
    public void addCategoria(Categoria c) {
+       Session sessao = HibernateUtil.getSessionFactory().openSession();
+       Transaction trans = sessao.beginTransaction();
        try {
            sessao.save(c);
            trans.commit();
@@ -34,16 +36,36 @@ public class CategoriaDao {
        }
    }
    
-   public List pegarListaCategoria() {
-       listaCategoria = sessao.createCriteria(Categoria.class).list();
-       return listaCategoria;
+   public void deletarCategoria(Categoria c) {
+       Session sessao = HibernateUtil.getSessionFactory().openSession();
+       Transaction trans = sessao.beginTransaction();
+       try {
+           sessao.delete(c);
+           trans.commit();
+       } catch (Exception err) {
+           err.getMessage(); 
+       } finally {
+           sessao.close();
+       }
    }
    
+   public List pegarListaCategoria() {
+       Session sessao = HibernateUtil.getSessionFactory().openSession();
+       Transaction trans = sessao.beginTransaction();
+       listaCategoria = sessao.createCriteria(Categoria.class).list();
+       sessao.close();
+       return listaCategoria;
+       
+   }
+   /*
    public Categoria pegarCategoriaById(Integer id) {
+       Session sessao = HibernateUtil.getSessionFactory().openSession();
+       Transaction trans = sessao.beginTransaction();
        Query q = sessao.createQuery("from Categoria as cat where cat.id = " + id );
        Categoria cat = new Categoria();
        cat = (Categoria)q.uniqueResult();
-       return cat;
-   }
+       sessao.close();
+       return cat; 
+   } */
     
 }

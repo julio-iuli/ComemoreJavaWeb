@@ -9,7 +9,9 @@ import dao.CategoriaDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import pojo.Categoria;
 
 /**
@@ -22,6 +24,7 @@ public class CategoriaBean implements Serializable {
 
     private List<Categoria> categorias;
     private Categoria categoria = new Categoria();
+    private CategoriaDao categoriaDao = new CategoriaDao();
     /**
      * Creates a new instance of CategoriaBean
      */
@@ -29,28 +32,25 @@ public class CategoriaBean implements Serializable {
     }
     
     public String adicionarCategoria() {
-        CategoriaDao dao = new CategoriaDao();
-        dao.addCategoria(categoria);
+        categoriaDao = new CategoriaDao();
+        categoriaDao.addCategoria(categoria);
         categoria = new Categoria();
+        
         return "categorias";
     }
     
-        public Categoria getBeer(Integer id) {
-        if (id == null){
-            throw new IllegalArgumentException("no id provided");
-        }
-        for (Categoria cate : categorias){
-            if (id.equals(cate.getId())){
-                return cate;
-            }
-        }
-        return null;
+    public String apagarCategoria(Categoria c) {
+        this.categoria = c;
+        categoriaDao.deletarCategoria(categoria);
+        this.categoria = new Categoria();
+        return "categorias";
     }
+    
+   
         
     public List<Categoria> pegarListaCategorias() {
-        CategoriaDao dao = new CategoriaDao();
-        categorias = dao.pegarListaCategoria();
-        return categorias;
+        categorias = categoriaDao.pegarListaCategoria();
+        return (ArrayList)categorias;
     }
 
     public Categoria getCategoria() {
@@ -59,6 +59,31 @@ public class CategoriaBean implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.categoria);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CategoriaBean other = (CategoriaBean) obj;
+        if (!Objects.equals(this.categoria, other.categoria)) {
+            return false;
+        }
+        return true;
     }
     
     

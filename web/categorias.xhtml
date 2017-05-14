@@ -12,7 +12,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     Categoria <h:inputText value="#{categoriaBean.categoria.nome}" />
-                    <h:inputHidden /> <h:commandButton value="GRAVAR" action="#{categoriaBean.adicionarCategoria()}" />
+                    <h:inputHidden /> <h:commandButton value="GRAVAR" action="#{categoriaBean.adicionarCategoria}" />
                 </h:panelGrid>
                 <h:dataTable value="#{categoriaBean.pegarListaCategorias()}" var="data" border="1" id="tabela" >
                     <h:column>
@@ -25,7 +25,7 @@
                         <f:facet name="header">
                             AÇÕES
                         </f:facet>
-                        <h:commandLink value="REMOVER" />
+                        <h:commandLink value="REMOVER" action="#{categoriaBean.apagarCategoria(data)}" />
                         | <h:commandLink value="ALTERAR" />
                     </h:column>
                 </h:dataTable>
