@@ -41,6 +41,11 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-
-    </session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/comemore?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">aluno</property>
+    <property name="hibernate.connection.password">senac</property>
+    <mapping class="pojo.Categoria"/>
+    <mapping class="pojo.Tema"/>
+  </session-factory>
 </hibernate-configuration>
