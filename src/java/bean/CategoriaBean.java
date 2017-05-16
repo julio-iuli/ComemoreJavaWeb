@@ -5,14 +5,13 @@
  */
 package bean;
 
-import dao.CategoriaDao;
+import pojo.Categoria;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import pojo.Categoria;
+import dao.CategoriaDao;
 
 /**
  *
@@ -70,30 +69,6 @@ public class CategoriaBean implements Serializable {
         this.categoria = categoria;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.categoria);
-        return hash;
-    }
+ 
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CategoriaBean other = (CategoriaBean) obj;
-        if (!Objects.equals(this.categoria, other.categoria)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
 }

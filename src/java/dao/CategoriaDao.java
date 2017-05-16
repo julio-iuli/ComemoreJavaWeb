@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojo.Categoria;
 import util.HibernateUtil;
+import util.HibernateUtil;
 
 /**
  *
@@ -70,15 +71,15 @@ public class CategoriaDao {
        return listaCategoria;
        
    }
-   /*
-   public Categoria pegarCategoriaById(Integer id) {
+   
+   public Categoria pegarCategoriaById(String id) {
        Session sessao = HibernateUtil.getSessionFactory().openSession();
        Transaction trans = sessao.beginTransaction();
        Query q = sessao.createQuery("from Categoria as cat where cat.id = " + id );
-       Categoria cat = new Categoria();
+       Categoria cat;
        cat = (Categoria)q.uniqueResult();
        sessao.close();
        return cat; 
-   } */
+   } 
     
 }

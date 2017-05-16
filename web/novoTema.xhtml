@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SISTEMA COMEMORE</title>
+    </h:head>
+    <h:body>
+        <center>
+    
+            <h:form>
+                <h1>NOVO TEMA</h1>
+                <h:panelGrid columns="2">
+                    Nome <h:inputText value="#{temaBean.tema.nome}"/>
+                    Status
+                    <h:selectOneRadio value="#{temaBean.tema.status}">
+                        <f:selectItem itemValue="ativo" itemLabel="Inativo"/>
+                        <f:selectItem itemValue="inativo" itemLabel="Inativo"/>
+                    </h:selectOneRadio>
+                    Gênero
+                    <h:selectOneRadio value="#{temaBean.tema.genero}">
+                        <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="F" itemLabel="Feminino"/>
+                        <f:selectItem itemValue="U" itemLabel="Unissex"/>
+                    </h:selectOneRadio>
+                    Data de Compra
+                    <p:calendar id="dataCompra" value="#{temaBean.tema.datacompra}"  pattern="dd/MM/yyyy" mode="popup"/>
+                    Preço <h:inputText value="#{temaBean.tema.preco}" size="9">
+                        <f:convertNumber pattern="0.00" />
+                    </h:inputText>
+                    Categoria 
+                    <h:selectOneMenu  >
+                        <f:selectItems value="#{temaBean.pegarListaCategoria()}" var="item" itemLabel="#{item}" itemValue="#{item}" />
+                    </h:selectOneMenu>
+                    Descrição <h:inputTextarea value="#{temaBean.tema.descricao}"/>
+                    <h:inputHidden/><h:commandButton value="GRAVAR" action="#{temaBean.adicionar()}" />
+                </h:panelGrid>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

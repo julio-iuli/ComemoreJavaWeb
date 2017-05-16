@@ -5,6 +5,7 @@
  */
 package pojo;
 
+import pojo.Tema;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,8 @@ public class Categoria implements Serializable {
     @OneToMany(mappedBy="categoria", targetEntity = Tema.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Tema> tema;
 
+    public Categoria(){}
+    
     public Integer getId() {
         return id;
     }
@@ -49,9 +52,14 @@ public class Categoria implements Serializable {
         this.nome = nome;
     }
 
+    public List<Tema> getTema() {
+        return tema;
+    }
 
-
-
+    public void setTema(List<Tema> tema) {
+        this.tema = tema;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;
