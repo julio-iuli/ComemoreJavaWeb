@@ -37,7 +37,7 @@ public class Tema implements Serializable {
     Date datacompra;
     double preco;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="idcategoria")
     private Categoria categoria;
 

@@ -32,8 +32,8 @@
                         <f:convertNumber pattern="0.00" />
                     </h:inputText>
                     Categoria 
-                    <h:selectOneMenu  >
-                        <f:selectItems value="#{temaBean.pegarListaCategoria()}" var="item" itemLabel="#{item}" itemValue="#{item}" />
+                    <h:selectOneMenu value="#{temaBean.tema.categoria}" converter="categoriaConverter" >
+                        <f:selectItems value="#{temaBean.pegarListaCategoria()}" var="item" itemLabel="#{item.id}" itemValue="#{item}" />
                     </h:selectOneMenu>
                     Descrição <h:inputTextarea value="#{temaBean.tema.descricao}"/>
                     <h:inputHidden/><h:commandButton value="GRAVAR" action="#{temaBean.adicionar()}" />

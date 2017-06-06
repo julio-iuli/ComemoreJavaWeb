@@ -18,9 +18,9 @@ public class CategoriaConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        
+        Categoria categoria;
         CategoriaDao dao = new CategoriaDao();
-        Categoria categoria = dao.pegarCategoriaById(value);
+        categoria = dao.pegarCategoriaById(value);
         return categoria;
     }
 
