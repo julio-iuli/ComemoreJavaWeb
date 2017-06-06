@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/06/2017 22:18:30 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Tema" table="tema">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="id" />
+            <generator class="native"></generator>
+        </id>
+        <many-to-one name="categoria" class="pojo.Categoria" access="field" fetch="join">
+            <column name="idcategoria" />
+        </many-to-one>
+        <property name="datacompra" type="date" access="field">
+            <column name="datacompra" />
+        </property>
+        <property name="descricao" type="java.lang.String" access="field">
+            <column name="descricao" />
+        </property>
+        <property name="genero" type="char" access="field">
+            <column name="genero" not-null="true" />
+        </property>
+        <property name="nome" type="java.lang.String" access="field">
+            <column name="nome" />
+        </property>
+        <property name="preco" type="double" access="field">
+            <column name="preco" not-null="true" />
+        </property>
+        <property name="status" type="java.lang.String" access="field">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

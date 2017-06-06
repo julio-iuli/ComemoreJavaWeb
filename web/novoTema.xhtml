@@ -33,7 +33,7 @@
                     </h:inputText>
                     Categoria 
                     <h:selectOneMenu value="#{temaBean.tema.categoria}" converter="categoriaConverter" >
-                        <f:selectItems value="#{temaBean.pegarListaCategoria()}" var="item" itemLabel="#{item.id}" itemValue="#{item}" />
+                        <f:selectItems value="#{temaBean.pegarListaCategoria()}" var="item" itemLabel="#{item.nome}" itemValue="#{item}" />
                     </h:selectOneMenu>
                     Descrição <h:inputTextarea value="#{temaBean.tema.descricao}"/>
                     <h:inputHidden/><h:commandButton value="GRAVAR" action="#{temaBean.adicionar()}" />

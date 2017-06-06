@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/06/2017 22:18:30 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Cargo" table="cargo" catalog="comemore" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="60" not-null="true" unique="true" />
+        </property>
+        <property name="salario" type="big_decimal">
+            <column name="salario" precision="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

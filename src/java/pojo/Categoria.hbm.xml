@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/06/2017 22:18:30 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Categoria" table="categoria">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="id" />
+            <generator class="native"></generator>
+        </id>
+        <property name="nome" type="java.lang.String" access="field">
+            <column name="nome" />
+        </property>
+        <bag name="tema" table="tema" inverse="true" lazy="true" cascade="all" access="field" fetch="select">
+            <key>
+                <column name="idcategoria" />
+            </key>
+            <one-to-many class="pojo.Tema" />
+        </bag>
+    </class>
+</hibernate-mapping>
